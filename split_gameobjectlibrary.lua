@@ -7,11 +7,10 @@ local function replace_comparator_strings(entry)
     }
 
     for _, comparator in ipairs(comparators) do
-        entry = string.gsub(entry, "\"" .. comparator ..
-                                "%({?[%w,?%s]*}?%)" .. "\"",
+        entry = string.gsub(entry,
+                            "\"" .. comparator .. "%({?[%w,?%s]*}?%)" .. "\"",
                             function(str)
-            str = string.gsub(str, "%[?\"", "")
-            str = string.gsub(str, "%]?", "")
+            str = string.gsub(str, "\"", "")
             return str
         end)
     end
@@ -20,7 +19,7 @@ local function replace_comparator_strings(entry)
 end
 
 local function replace_string_assignments(entry)
-    return string.gsub(entry, "%[\"[%w_?]*\"[%]]?", function(str)
+    return string.gsub(entry, "%[\"%a[_?%w]*\"[%]]?", function(str)
         str = string.gsub(str, "%[?\"", "")
         str = string.gsub(str, "%]?", "")
         return str
