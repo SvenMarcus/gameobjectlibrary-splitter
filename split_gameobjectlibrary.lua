@@ -10,6 +10,7 @@ end
 local function split_game_object_library()
     local game_object_lib = require("GameObjectLibrary")
 
+    os.execute("mkdir -p split_files")
     for k, v in pairs(game_object_lib.Units) do
         local file = io.open("split_files/"..k..".lua", "w")
         entry_to_file(v, file)
