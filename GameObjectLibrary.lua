@@ -1613,11 +1613,13 @@ GameObjectLibrary = {
                 ["STANDARD_VULTURE_SQUADRON_DOUBLE"] = {
                     ["REBEL"] = {
                         Reserve = 6,
-                        Initial = 2
+                        Initial = 2,
+                        TechLevel = IsOneOf({2, 3, 5})
                     },
                     ["PIRATES"] = {
                         Reserve = 6,
-                        Initial = 2
+                        Initial = 2,
+                        TechLevel = InInterval(1, 4)
                     },
                     ["PENTASTAR"] = {
                         Reserve = 6,

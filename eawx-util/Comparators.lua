@@ -18,80 +18,41 @@
 --*   @Copyright:           © TR: Imperial Civil War Development Team
 --******************************************************************************
 
+local serializer = require("serializer")
+
 
 ---@param num number
 function EqualTo (num)
-    return {
-      number = num,
-      evaluate = function(self, number)
-        return number == self.number
-      end
-    }
+    return "EqualTo("..tostring(num)..")"
   end
   
   ---@param num number
   function GreaterThan (num)
-    return {
-      number = num,
-      evaluate = function(self, number)
-        return number > self.number
-      end
-    }
+    return "GreaterThan("..tostring(num)..")"
   end
   
   ---@param num number
   function GreaterOrEqualTo (num)
-    return {
-      number = num,
-      evaluate = function(self, number)
-        return number >= self.number
-      end
-    }
+    return "GreaterOrEqualTo("..tostring(num)..")"
   end
   
   ---@param num number
   function LessThan (num)
-    return {
-      number = num,
-      evaluate = function(self, number)
-        return number < self.number
-      end
-    }
+    return "LessThan("..tostring(num)..")"
   end
   
   ---@param num number
   function LessOrEqualTo (num)
-    return {
-      number = num,
-      evaluate = function(self, number)
-        return number <= self.number
-      end
-    }
+    return "LessOrEqualTo("..tostring(num)..")"
   end
   
   ---@param lower number
   ---@param upper number
   function InInterval(lower, upper)
-    return {
-      lower = lower,
-      upper = upper,
-      evaluate = function(self, number)
-        return number >= self.lower and number <= self.upper
-      end
-    }
+    return "InInterval("..tostring(lower)..", "..tostring(upper)..")"
   end
   
   ---@param tab number[]
   function IsOneOf(tab)
-    return {
-      tab = tab,
-      evaluate = function(self, value)
-        for _, v in pairs(self.tab) do
-          if v == value then
-            return true
-          end
-        end
-        return false
-      end
-    }
+    return "IsOneOf("..serializer:serialize(tab, true)..")"
   end
